@@ -1,4 +1,5 @@
 import { Agent } from '../types/agent';
+import { Category } from '../types/categories';
 
 export const agents: Agent[] = [
   {
@@ -7,7 +8,7 @@ export const agents: Agent[] = [
     description: 'Advanced AI coding assistant that helps developers write better code faster with real-time suggestions and code analysis.',
     capabilities: ['Code completion', 'Bug detection', 'Code refactoring', 'Documentation generation'],
     image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=1000',
-    category: 'Development',
+    category: 'Coding' as Category,
     rating: 4.8,
     useCases: ['Web development', 'Mobile development', 'Code review', 'Learning programming'],
     pricing: {
@@ -18,13 +19,13 @@ export const agents: Agent[] = [
   },
   {
     id: '2',
-    name: 'DataSense AI',
-    description: 'Intelligent data analysis tool that transforms complex datasets into actionable insights.',
-    capabilities: ['Data visualization', 'Predictive analytics', 'Pattern recognition', 'Automated reporting'],
+    name: 'WorkflowMaster',
+    description: 'Intelligent workflow automation tool that streamlines your business processes and boosts productivity.',
+    capabilities: ['Process automation', 'Task management', 'Integration support', 'Analytics'],
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000',
-    category: 'Analytics',
+    category: 'Workflow' as Category,
     rating: 4.6,
-    useCases: ['Business intelligence', 'Market research', 'Financial analysis', 'Scientific research'],
+    useCases: ['Business automation', 'Project management', 'Team collaboration', 'Process optimization'],
     pricing: {
       free: false,
       startingPrice: 29
@@ -33,13 +34,13 @@ export const agents: Agent[] = [
   },
   {
     id: '3',
-    name: 'CreativeGenius',
-    description: 'AI-powered creative assistant for generating unique designs, artwork, and creative content.',
-    capabilities: ['Image generation', 'Design suggestions', 'Style transfer', 'Color palette generation'],
+    name: 'ContentGenius',
+    description: 'AI-powered content creation assistant for generating engaging and SEO-optimized content.',
+    capabilities: ['Content generation', 'SEO optimization', 'Grammar checking', 'Style suggestions'],
     image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1000',
-    category: 'Creative',
+    category: 'Content Creation' as Category,
     rating: 4.7,
-    useCases: ['Graphic design', 'Digital art', 'Marketing materials', 'Brand identity'],
+    useCases: ['Blog writing', 'Social media', 'Marketing copy', 'Product descriptions'],
     pricing: {
       free: true,
       startingPrice: 15

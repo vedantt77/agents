@@ -1,31 +1,48 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { agents } from './data/agents';
-import { AgentDetail } from './components/AgentDetail';
-import { Hero } from './components/Hero';
+import { HelmetProvider } from 'react-helmet-async';
+import { Suspense, lazy } from 'react';
 import { Layout } from './components/Layout';
-import { AgentsList } from './components/AgentsList';
+import { LoadingSpinner } from './components/LoadingSpinner';
+import { Head } from './components/Head';
+import { SearchProvider } from './contexts/SearchContext';
+
+const Hero = lazy(() => import('./components/Hero'));
+const AgentsList = lazy(() => import('./components/AgentsList'));
+const AgentDetail = lazy(() => import('./components/AgentDetail'));
 
 export default function App() {
-  const featuredAgents = agents.filter(agent => agent.featured);
-  const regularAgents = agents.filter(agent => !agent.featured);
-
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <Hero />
-              <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
-                <AgentsList agents={featuredAgents} title="Featured Agents" />
-                <AgentsList agents={regularAgents} title="All Agents" />
-              </main>
-            </Layout>
-          }
-        />
-        <Route path="/agent/:id" element={<AgentDetail />} />
-      </Routes>
-    </Router>
+    <HelmetProvider>
+      <SearchProvider>
+        <Router>
+          <Head />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Layout>
+                  <Suspense fallback={<LoadingSpinner />}>
+                    <Hero />
+                    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+                      <AgentsList />
+                    </main>
+                  </Suspense>
+                </Layout>
+              }
+            />
+            <Route
+              path="/agent/:id"
+              element={
+                <Layout>
+                  <Suspense fallback={<LoadingSpinner />}>
+                    <AgentDetail />
+                  </Suspense>
+                </Layout>
+              }
+            />
+          </Routes>
+        </Router>
+      </SearchProvider>
+    </HelmetProvider>
   );
 }

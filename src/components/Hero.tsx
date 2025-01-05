@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { SearchBar } from './SearchBar';
 import { Sparkles } from 'lucide-react';
 
-export function Hero() {
+function Hero() {
   const handleSearch = (query: string) => {
     // TODO: Implement search functionality
     console.log('Search query:', query);
@@ -52,3 +52,5 @@ export function Hero() {
     </div>
   );
 }
+
+export default Hero;

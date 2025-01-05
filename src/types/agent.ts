@@ -1,10 +1,12 @@
+import { Category } from './categories';
+
 export interface Agent {
   id: string;
   name: string;
   description: string;
   capabilities: string[];
   image: string;
-  category: string;
+  category: Category;
   rating: number;
   useCases: string[];
   pricing: {
